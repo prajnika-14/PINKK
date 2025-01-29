@@ -1,0 +1,30 @@
+Task 1: Research based case studies (Please use APA-reference) 
+The goal of this task is to explore and create a research-based APA-referenced solution with real life cases for the following topics based on the group number.
+Group Number: 2
+Topics: ML Use Cases, Identifying Good Problems for ML, Hard ML Problems
+
+ML Use Cases
+ML has a variety of applications, ranging from automation, detection and personalization to things like optimization.
+ 
+Fig. 1: Sub-fields of machine learning 
+Fig. 2: COVID-19 applications of machine learning
+Image Sources: https://www.sciencedirect.com/science/article/pii/S2666285X21000042#fig0003
+
+Identifying Good Problems for ML
+We can identify applications for Machine Learning by looking for ideal traits like:
+•	Large size, high quality datasets are available.
+•	Clear objectives exist (e.g., predicting, classifying, or clustering).
+•	Data patterns or correlations can be extracted from the given data.
+
+Hard ML Problems
+•	Datasets may have less or incorrect data.
+•	Can degrade model performance.
+•	Ethical concerns such as privacy issues or bias in data.
+•	Ensuring models perform well on unseen, real-world data beyond training datasets.
+ 
+Source: https://ojrd.biomedcentral.com/articles/10.1186/s13023-020-01424-6
+Fig. 3: Types of algorithms used in medical studies of ML
+*References*
+Sarker, I.H. Machine Learning: Algorithms, Real-World Applications and Research Directions. SN COMPUT. SCI. 2, 160 (2021). https://doi.org/10.1007/s42979-021-00592-x
+Khan, M. A., Bahadur, A., Khan, M. S., et al. (2021). Machine learning: Algorithms, real-world applications, and research directions. SN Computer Science, 2(3), 160. https://doi.org/10.1007/s42979-021-00592-x
+Schaefer, J., Lehne, M., Schepers, J. et al. The use of machine learning in rare diseases: a scoping review. Orphanet J Rare Dis 15, 145 (2020). https://doi.org/10.1186/s13023-020-01424-6
