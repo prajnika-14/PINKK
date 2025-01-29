@@ -1,0 +1,89 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from graphviz import Digraph
+from sklearn.linear_model import LinearRegression
+
+print("Loading the dataset...")
+data = pd.read_csv(r"C:\Users\indra\Downloads\Problem 3.csv")
+
+temperature_data = data[['MaxTemp', 'MinTemp']]
+
+print("Checking for missing values...")
+missing_values = temperature_data.isnull().sum()
+print(f"Missing Values:\n{missing_values}\n")
+
+if missing_values.sum() > 0:
+    temperature_data = temperature_data.dropna()
+    print("Missing values dropped.")
+
+print("Creating scatter plot...\n")
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=temperature_data['MinTemp'], y=temperature_data['MaxTemp'], alpha=0.7)
+
+plt.xlabel('Minimum Temperature (°C)')
+plt.ylabel('Maximum Temperature (°C)')
+plt.title('Relationship Between Minimum and Maximum Temperatures')
+plt.grid(True)
+plt.show()
+
+print("Training linear regression model...")
+X = temperature_data[['MinTemp']]
+y = temperature_data['MaxTemp']
+
+model = LinearRegression()
+model.fit(X, y)
+
+intercept = model.intercept_
+slope = model.coef_[0]
+
+relation_equation = f"MaxTemp = {intercept:.2f} + {slope:.2f} * MinTemp"
+print(f"Relation Equation: {relation_equation}")
+
+min_temp_input = 15
+predicted_max_temp = model.predict([[min_temp_input]])
+print(f"Predicted MaxTemp for MinTemp {min_temp_input}°C: {predicted_max_temp[0]:.2f}°C\n")
+
+print("Visualizing the regression line...\n")
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=temperature_data['MinTemp'], y=temperature_data['MaxTemp'], alpha=0.7)
+plt.plot(temperature_data['MinTemp'], model.predict(temperature_data[['MinTemp']]), color='red', linewidth=2)
+plt.xlabel('Minimum Temperature (°C)')
+plt.ylabel('Maximum Temperature (°C)')
+plt.title('Linear Regression: Predicting MaxTemp from MinTemp')
+plt.grid(True)
+plt.show()
+
+print("Generating detailed flowchart...")
+
+detailed_flowchart = Digraph("Detailed_Flowchart", format='png')
+detailed_flowchart.attr(rankdir='TB', size='10,8')
+
+detailed_flowchart.node("Start", "Start", shape="ellipse")
+detailed_flowchart.node("Libraries", "Import Necessary Libraries\n(pandas, matplotlib, seaborn, sklearn, graphviz)", shape="rectangle")
+detailed_flowchart.node("Load Data", "Load Dataset (Problem 3.csv)", shape="rectangle")
+detailed_flowchart.node("Check Missing", "Check for Missing Values", shape="diamond")
+detailed_flowchart.node("Handle Missing", "Handle Missing Values\n(Drop rows with missing values)", shape="rectangle")
+detailed_flowchart.node("No Missing", "No Missing Values Found", shape="rectangle")
+detailed_flowchart.node("Visualize", "Create Scatter Plot\n(MinTemp vs MaxTemp)", shape="rectangle")
+detailed_flowchart.node("Model Training", "Train Linear Regression Model\n(on MinTemp and MaxTemp)", shape="rectangle")
+detailed_flowchart.node("Equation", f"Formulate Regression Equation\n{relation_equation}\n(Intercept={intercept:.2f}, Slope={slope:.2f})", shape="rectangle")
+detailed_flowchart.node("Prediction", f"Predict MaxTemp\nfor MinTemp = {min_temp_input}°C", shape="rectangle")
+detailed_flowchart.node("End", "End", shape="ellipse")
+
+detailed_flowchart.edge("Start", "Libraries")
+detailed_flowchart.edge("Libraries", "Load Data")
+detailed_flowchart.edge("Load Data", "Check Missing")
+detailed_flowchart.edge("Check Missing", "Handle Missing", label="Yes")
+detailed_flowchart.edge("Check Missing", "No Missing", label="No")
+detailed_flowchart.edge("Handle Missing", "Visualize")
+detailed_flowchart.edge("No Missing", "Visualize")
+
+detailed_flowchart.edge("Visualize", "Model Training")
+detailed_flowchart.edge("Model Training", "Equation")
+detailed_flowchart.edge("Equation", "Prediction")
+detailed_flowchart.edge("Prediction", "End")
+
+detailed_flowchart_file = "temperature_analysis_flowchart_2.0"
+detailed_flowchart.render(detailed_flowchart_file, cleanup=True)
+print(f"Detailed flowchart saved as {detailed_flowchart_file}.png")
