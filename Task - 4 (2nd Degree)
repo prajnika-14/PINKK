@@ -1,0 +1,38 @@
+import numpy as np
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+
+# Sample tractor age and maintenance cost data (replace with your actual data)
+tractor_age = np.array([2, 3, 5, 7, 9, 10, 12, 14,15,17,19, 20,21, 23,25,26,28]).reshape(-1, 1)  # Reshape to a 2D array 
+maintenance_cost = np.array([700, 650, 600, 900, 1210, 1410, 1400,1410,1420,1490,1600,1210,1300, 900,700,780,700])
+
+# Transform the data for polynomial regression
+poly = PolynomialFeatures(degree=2)  # Degree 2 for a parabolic fit
+tractor_age_poly = poly.fit_transform(tractor_age)
+
+# Fit the polynomial regression model
+poly_model = LinearRegression()
+poly_model.fit(tractor_age_poly, maintenance_cost)
+
+# Predictions using the polynomial model
+predicted_cost_poly = poly_model.predict(tractor_age_poly)
+
+# Plot the actual data and the polynomial regression curve
+plt.figure(figsize=(8, 6))
+plt.scatter(tractor_age, maintenance_cost, color='blue', label='Actual Data')
+plt.plot(tractor_age, predicted_cost_poly, color='green', label='Polynomial Regression Curve')
+plt.title('Tractor Age vs Maintenance Cost (Polynomial Fit)')
+plt.xlabel('Tractor Age (Years)')
+plt.ylabel('Maintenance Cost ($)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Coefficients and evaluation
+mse_poly = mean_squared_error(maintenance_cost, predicted_cost_poly)
+poly_coefficients = poly_model.coef_
+poly_intercept = poly_model.intercept_
+
+mse_poly, poly_coefficients, poly_intercept
