@@ -36,3 +36,5 @@ poly_coefficients = poly_model.coef_
 poly_intercept = poly_model.intercept_
 
 mse_poly, poly_coefficients, poly_intercept
+
+R-squared: 0.8214944194644349
