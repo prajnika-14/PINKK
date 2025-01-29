@@ -38,3 +38,5 @@ print(f"Mean Squared Error (MSE) for 4th-degree Polynomial Fit: {mse_poly4}")
 print(f"Coefficients: {poly_model.coef_}")
 print(f"Intercept: {poly_model.intercept_}")
 
+
+-> R-squared: 0.9180308346141657
