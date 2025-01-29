@@ -23,3 +23,4 @@ plt.ylabel('Maintenance Cost ($)')
 plt.legend()
 plt.grid(True)
 plt.show()
+R-squared: 1.0
