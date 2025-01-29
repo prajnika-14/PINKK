@@ -1,0 +1,4 @@
+“Predict playing tennis when <sunny, cool, high, strong> What probability should be used to make the prediction? How to compute the probability?”
+Naive Bayes Classification: 
+P(Play | sunny, cool, high, strong)
+This represents the likelihood of playing tennis given specific weather conditions.
