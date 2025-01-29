@@ -1,0 +1,16 @@
+TASK-4
+Investigate the relationship between the age of farm tractors and their maintenance costs using data collected from Putnam County, FL.
+Data Points:
+Tractor Age (5,10,15,20,25)
+Maintenance Costs (600,1400,1400,1200,800)
+Data Characteristics:
+Maintenance costs peak at mid-life (15 years).
+Costs reduce after the mid-life stage.
+
+Model Used:
+Polynomial Regression (2nd Degree),4th degree and spline
+
+Observation points:
+Maintenance costs are highest at around 15 years of tractor age.
+Younger tractors have relatively lower costs.
+Older tractors beyond 20 years also show declining maintenance costs.
