@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.interpolate import make_interp_spline
+
+# Sample tractor age and maintenance cost data
+tractor_age = np.array([2, 3, 5, 7, 9, 10, 12, 14, 15, 17, 19, 20, 21, 23, 25, 26, 28])
+maintenance_cost = np.array([700, 650, 600, 900, 1210, 1410, 1400, 1410, 1420, 1490, 1600, 1210, 1300, 900, 700, 780, 700])
+
+# Generate a smooth curve using Spline Interpolation
+spline_model = make_interp_spline(tractor_age, maintenance_cost, k=3)  # k=3 for cubic spline
+
+# Create a finer set of x-values for a smooth curve
+age_range = np.linspace(min(tractor_age), max(tractor_age), 300)  
+spline_predictions = spline_model(age_range)
+
+# Plot the actual data and the spline fit
+plt.figure(figsize=(8, 6))
+plt.scatter(tractor_age, maintenance_cost, color='blue', label='Actual Data')
+plt.plot(age_range, spline_predictions, color='red', label='Spline Fit Curve')
+plt.title('Tractor Age vs Maintenance Cost (Spline Fit)')
+plt.xlabel('Tractor Age (Years)')
+plt.ylabel('Maintenance Cost ($)')
+plt.legend()
+plt.grid(True)
+plt.show()
