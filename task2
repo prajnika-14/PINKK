@@ -1,0 +1,9 @@
+TASK-2
+Problem 3: Is there a relationship between the daily minimum and maximum temperature? Can you predict the maximum temperature given the minimum temperature?
+To create the flowchart, we used the Graphviz library to visualize the workflow of our temperature analysis process.
+•	Nodes: Represented each key step in the process (e.g., loading data, cleaning data, visualization, regression modeling, and prediction).
+•	Edges: Connected the steps in logical order to show the flow of actions.
+•	Regression Equation: Included the linear equation from the model as part of the flow.
+•	Output: Rendered the flowchart as a PNG image for use in the presentation.
+This flowchart visually summarizes the entire analytical process from data input to prediction.
+
